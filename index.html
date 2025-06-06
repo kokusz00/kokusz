@@ -97,6 +97,17 @@
       color: black;
       cursor: pointer;
     }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -114,6 +125,7 @@
   </section>
 
   <div class="form-popup" id="popupForm">
+    <button class="close-btn" onclick="document.getElementById('popupForm').style.display='none'">&times;</button>
     <form id="contactForm">
       <input type="text" name="name" placeholder="Name" required>
       <input type="email" name="email" placeholder="Email" required>
