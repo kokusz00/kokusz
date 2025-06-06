@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Portfolio</title>
+  <title>Kokusz Portfolio</title>
   <style>
     body {
       margin: 0;
@@ -48,8 +48,41 @@
       box-shadow: 0 0 10px rgba(255,255,255,0.1);
     }
 
-    .contact-form input,
-    .contact-form textarea {
+    .cta {
+      text-align: center;
+    }
+
+    .cta-button {
+      background: white;
+      color: black;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      padding: 3rem 2rem;
+      overflow-y: auto;
+    }
+
+    .form-popup form {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .form-popup input,
+    .form-popup textarea,
+    .form-popup button {
       width: 100%;
       padding: 1rem;
       margin-bottom: 1rem;
@@ -59,10 +92,7 @@
       color: white;
     }
 
-    .contact-form button {
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 5px;
+    .form-popup button {
       background: white;
       color: black;
       cursor: pointer;
@@ -77,15 +107,25 @@
     <p>I build modern websites for people</p>
   </header>
 
-  <section>
-    <h2>Need a web? Fill this out!</h2>
-    <form class="contact-form" id="contactForm">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="message" placeholder="Your message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <section class="cta">
+    <h2>Want a beautiful custom website?</h2>
+    <p>I can make it real. Click below and let's get started!</p>
+    <button class="cta-button" onclick="document.getElementById('popupForm').style.display='block'">Fill Out Form</button>
   </section>
+
+  <div class="form-popup" id="popupForm">
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="describe" placeholder="Describe web" required></textarea>
+      <textarea name="features" placeholder="What should the web have?" required></textarea>
+      <input type="text" name="deadline" placeholder="When does it needed?" required>
+      <input type="text" name="design" placeholder="What design is needed?" required>
+      <input type="text" name="type" placeholder="What kind of web is it?" required>
+      <textarea name="additional" placeholder="Additional informations"></textarea>
+      <button type="submit">Send Request</button>
+    </form>
+  </div>
 
   <section>
     <h2>My Work</h2>
@@ -157,16 +197,20 @@
       canvas.height = h;
     });
 
-    // Discord webhook form submission
     document.getElementById('contactForm').addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      const name = this.name.value;
-      const email = this.email.value;
-      const message = this.message.value;
-
+      const data = new FormData(this);
       const payload = {
-        content: `📨 New Portfolio Contact\n**Name:** ${name}\n**Email:** ${email}\n**Message:** ${message}`
+        content: `📨 **New Website Request**\n` +
+          `**Name:** ${data.get('name')}\n` +
+          `**Email:** ${data.get('email')}\n` +
+          `**Describe Web:** ${data.get('describe')}\n` +
+          `**Features:** ${data.get('features')}\n` +
+          `**Deadline:** ${data.get('deadline')}\n` +
+          `**Design:** ${data.get('design')}\n` +
+          `**Type:** ${data.get('type')}\n` +
+          `**Additional Info:** ${data.get('additional')}`
       };
 
       try {
@@ -175,10 +219,11 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-        alert('Message sent!');
+        alert('Request sent successfully!');
         this.reset();
+        document.getElementById('popupForm').style.display = 'none';
       } catch (err) {
-        alert('Failed to send message.');
+        alert('Failed to send request.');
       }
     });
   </script>
