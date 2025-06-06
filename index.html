@@ -78,12 +78,17 @@
     .form-popup .close-btn {
       position: absolute;
       top: 1rem;
-      right: 1rem;
-      background: transparent;
-      color: white;
+      right: 1.5rem;
       font-size: 2rem;
+      color: white;
+      background: none;
       border: none;
       cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .form-popup .close-btn:hover {
+      color: #ff4c4c;
     }
 
     .form-popup form {
