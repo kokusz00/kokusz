@@ -78,6 +78,16 @@
   </header>
 
   <section>
+    <h2>Need a web? Fill this out!</h2>
+    <form class="contact-form" id="contactForm">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <section>
     <h2>My Work</h2>
     <div class="works" id="workGallery">
       <!-- Example project -->
@@ -88,16 +98,6 @@
       </div>
       <!-- Add more projects in the same format -->
     </div>
-  </section>
-
-  <section>
-    <h2>Contact Me</h2>
-    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="message" placeholder="Your message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
   </section>
 
   <script>
@@ -155,6 +155,31 @@
       h = window.innerHeight;
       canvas.width = w;
       canvas.height = h;
+    });
+
+    // Discord webhook form submission
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const name = this.name.value;
+      const email = this.email.value;
+      const message = this.message.value;
+
+      const payload = {
+        content: `📨 New Portfolio Contact\n**Name:** ${name}\n**Email:** ${email}\n**Message:** ${message}`
+      };
+
+      try {
+        await fetch('YOUR_DISCORD_WEBHOOK_URL', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        alert('Message sent!');
+        this.reset();
+      } catch (err) {
+        alert('Failed to send message.');
+      }
     });
   </script>
 </body>
