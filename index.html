@@ -71,20 +71,21 @@
       height: 100vh;
       background: rgba(0, 0, 0, 0.95);
       z-index: 1000;
-      padding: 3rem 2rem;
+      padding: 6rem 2rem 3rem;
       overflow-y: auto;
     }
 
     .form-popup .close-btn {
       position: absolute;
-      top: 1rem;
-      right: 1.5rem;
+      top: 0.5rem;
+      right: 1.2rem;
       font-size: 2rem;
       color: white;
       background: none;
       border: none;
       cursor: pointer;
       transition: color 0.3s;
+      z-index: 10;
     }
 
     .form-popup .close-btn:hover {
@@ -115,28 +116,29 @@
     }
 
     .about-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  background: white;
-  color: black;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-.about-btn:hover {
-  background: #ddd;
-}
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: white;
+      color: black;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .about-btn:hover {
+      background: #ddd;
+    }
   </style>
 </head>
 <body>
   <canvas id="stars"></canvas>
 
   <header>
-  <h1 style="margin: 0;">Kokusz</h1>
-  <p>I build modern websites for people</p>
-  <a href="about.html" class="about-btn">About Me</a>
+    <h1 style="margin: 0;">Kokusz</h1>
+    <p>I build modern websites for people</p>
+    <a href="about.html" class="about-btn">About Me</a>
   </header>
 
   <section class="cta">
@@ -163,23 +165,21 @@
   <section>
     <h2>My Work</h2>
     <div class="works" id="workGallery">
-<div class="work">
-  <h3>Christmas Countdown</h3>
-  <p>A web counting down till Christmas.</p>
-  <a href="https://kokusz00.github.io/christmas-web/" target="_blank">View Site</a>
-</div>
-
-<div class="work">
-  <h3>Counter Website</h3>
-  <p>A website with a counter.</p>
-  <a href="https://kokusz00.github.io/counter-web/" target="_blank">View Site</a>
-</div>
-
-<div class="work">
-  <h3>Stopwatch Website</h3>
-  <p>A website with a stopwatch.</p>
-  <a href="https://kokusz00.github.io/Stopwatch-web/" target="_blank">View Site</a>
-</div>
+      <div class="work">
+        <h3>Christmas Countdown</h3>
+        <p>A web counting down till christmas</p>
+        <a href="https://kokusz00.github.io/christmas-web/" target="_blank">View Site</a>
+      </div>
+      <div class="work">
+        <h3>Flizzy Clothing</h3>
+        <p>Website for a Roblox clothing group</p>
+        <a href="https://kokusz00.github.io/flizzy-clothing/" target="_blank">View Site</a>
+      </div>
+      <div class="work">
+        <h3>Myth Crew</h3>
+        <p>Application & feedback system for a FiveM team</p>
+        <a href="https://kokusz00.github.io/myth-crew/" target="_blank">View Site</a>
+      </div>
     </div>
   </section>
 
